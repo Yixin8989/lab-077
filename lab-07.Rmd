@@ -24,18 +24,19 @@ evals<-read.csv("data/evals.csv", row.names=1)
 1.  Visualize the distribution of `score` in the dataframe `evals`.
 
 ```{r viz-score}
-# add code here
+evals %>%
+  ggplot(aes(x = score)) +
+  geom_histogram(binwidth = 0.2) 
 ```
-
-*Add your other details and narratives here.*
 
 2.  Visualize and describe the relationship between `score` and `bty_avg` using `geom_point()` to represent the data. 
 
 ```{r scatterplot}
-# add code here
+evals %>%
+  ggplot(aes(x = score, y = bty_avg)) +
+  geom_point() +
+  geom_smooth(method = "lm") 
 ```
-
-*Add your narrative and other details here.*
 
 # Exercise 2: Simple Linear regression with a numerical predictor
 
@@ -58,9 +59,11 @@ tidy(___)
 2. Plot the data again using `geom_jitter()`, and add the regression line.
 
 ```{r viz-score_bty_fit,eval=FALSE}
-# add your plot here. Hint, you can add the regression line using geom_smooth()
+evals %>%
+  ggplot(aes(x = score, y = bty_avg)) +
+  geom_jitter() +
+  geom_smooth(method = "lm")
 ```
-
 3. Interpret the slope of the linear model in context of the data.
 
 *Add your interpretation here*
